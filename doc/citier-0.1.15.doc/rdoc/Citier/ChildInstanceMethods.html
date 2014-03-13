@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=CP850" http-equiv="Content-Type">
+
+<title>module Citier::ChildInstanceMethods - citier-0.1.15 Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/citier/child_instance_methods.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="InstanceMethods.html">Citier::InstanceMethods</a>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-save">#save</a>
+    
+    <li><a href="#method-i-save-21">#save!</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Citier.html">Citier</a>
+  
+    <li><a href="../Citier/ActsAsCitier.html">Citier::ActsAsCitier</a>
+  
+    <li><a href="../Citier/ChildInstanceMethods.html">Citier::ChildInstanceMethods</a>
+  
+    <li><a href="../Citier/ClassMethods.html">Citier::ClassMethods</a>
+  
+    <li><a href="../Citier/InstanceMethods.html">Citier::InstanceMethods</a>
+  
+    <li><a href="../Citier/InstanceMethods/CitierUniquenessValidator.html">Citier::InstanceMethods::CitierUniquenessValidator</a>
+  
+    <li><a href="../Citier/InstanceMethods/ForcedWriters.html">Citier::InstanceMethods::ForcedWriters</a>
+  
+    <li><a href="../Citier/RootInstanceMethods.html">Citier::RootInstanceMethods</a>
+  
+    <li><a href="../ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="../ActiveRecord/Base.html">ActiveRecord::Base</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters.html">ActiveRecord::ConnectionAdapters</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html">ActiveRecord::ConnectionAdapters::PostgreSQLAdapter</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters/SQLiteAdapter.html">ActiveRecord::ConnectionAdapters::SQLiteAdapter</a>
+  
+    <li><a href="../ActiveRecord/Relation.html">ActiveRecord::Relation</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module Citier::ChildInstanceMethods</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-save" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save</span><span
+            class="method-args">(options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save-source">
+            <pre><span class="ruby-comment"># File lib/citier/child_instance_methods.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:validate</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">valid?</span>)
+
+  <span class="ruby-comment">#citier_debug(&quot;Callback (#{self.inspect})&quot;)</span>
+  <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;SAVING #{self.class.to_s}&quot;</span>)
+
+  <span class="ruby-comment">#AIT NOTE: Will change any protected values back to original values so any models onwards won't see changes.</span>
+  <span class="ruby-comment"># Run save and create/update callbacks, just like ActiveRecord does</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">run_callbacks</span>(<span class="ruby-value">:save</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">run_callbacks</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">new_record?</span> <span class="ruby-operator">?</span> <span class="ruby-value">:create</span> <span class="ruby-operator">:</span> <span class="ruby-value">:update</span>) <span class="ruby-keyword">do</span>
+      <span class="ruby-comment">#get the attributes of the class which are inherited from it's parent.</span>
+      <span class="ruby-identifier">attributes_for_parent</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) }
+      <span class="ruby-identifier">changed_attributes_for_parent</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changed_attributes</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) }
+
+      <span class="ruby-comment"># Get the attributes of the class which are unique to this class and not inherited.</span>
+      <span class="ruby-identifier">attributes_for_current</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) }
+      <span class="ruby-identifier">changed_attributes_for_current</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">changed_attributes</span>.<span class="ruby-identifier">reject</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>,<span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">key</span>) }
+
+      <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Attributes for #{self.class.superclass.to_s}: #{attributes_for_parent.inspect}&quot;</span>)
+      <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Changed attributes for #{self.class.superclass.to_s}: #{changed_attributes_for_parent.keys.inspect}&quot;</span>)
+      <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Attributes for #{self.class.to_s}: #{attributes_for_current.inspect}&quot;</span>)
+      <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Changed attributes for #{self.class.to_s}: #{changed_attributes_for_current.keys.inspect}&quot;</span>)
+
+      <span class="ruby-comment">########</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># Parent saving</span>
+
+      <span class="ruby-comment">#create a new instance of the superclass, passing the inherited attributes.</span>
+      <span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">new</span>
+  
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">force_attributes</span>(<span class="ruby-identifier">attributes_for_parent</span>, <span class="ruby-value">:merge</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+      <span class="ruby-identifier">changed_attributes_for_parent</span>[<span class="ruby-string">&quot;id&quot;</span>] = <span class="ruby-value">0</span> <span class="ruby-comment"># We need to change at least something to force a timestamps update.</span>
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">force_changed_attributes</span>(<span class="ruby-identifier">changed_attributes_for_parent</span>)
+  
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">type</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">type</span>
+
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_new_record</span>(<span class="ruby-identifier">new_record?</span>)
+  
+      <span class="ruby-comment"># If we're root (AR subclass) this will just be saved as normal through AR. If we're a child it will call this method again. </span>
+      <span class="ruby-comment"># It will try and save it's parent and then save itself through the Writable constant.</span>
+      <span class="ruby-identifier">parent_saved</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">id</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">parent_saved</span>
+        <span class="ruby-comment"># Couldn't save parent class</span>
+        <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Class (#{self.class.superclass.to_s}) could not be saved&quot;</span>)
+        <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Errors = #{parent.errors.to_s}&quot;</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># Return false and exit run_callbacks :save and :create/:update, so the after_ callback won't run.</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment">#End of parent saving</span>
+
+      <span class="ruby-comment">######</span>
+      <span class="ruby-comment">##</span>
+      <span class="ruby-comment">## Self Saving</span>
+      <span class="ruby-comment">##</span>
+
+      <span class="ruby-comment"># If there are attributes for the current class (unique &amp; not inherited), save current model</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes_for_current</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">current</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span><span class="ruby-operator">::</span><span class="ruby-constant">Writable</span>.<span class="ruby-identifier">new</span>
+    
+        <span class="ruby-identifier">current</span>.<span class="ruby-identifier">force_attributes</span>(<span class="ruby-identifier">attributes_for_current</span>, <span class="ruby-value">:merge</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+        <span class="ruby-identifier">current</span>.<span class="ruby-identifier">force_changed_attributes</span>(<span class="ruby-identifier">changed_attributes_for_current</span>)
+    
+        <span class="ruby-identifier">current</span>.<span class="ruby-identifier">id</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-identifier">current</span>.<span class="ruby-identifier">is_new_record</span>(<span class="ruby-identifier">new_record?</span>)
+  
+        <span class="ruby-identifier">current_saved</span> = <span class="ruby-identifier">current</span>.<span class="ruby-identifier">save</span>
+        
+        <span class="ruby-identifier">current</span>.<span class="ruby-identifier">after_save_change_request</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">current</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-string">'after_save_change_request'</span>) <span class="ruby-comment">#Specific to an app I'm building</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">current_saved</span>
+          <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Class (#{self.class.superclass.to_s}) could not be saved&quot;</span>)
+          <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Errors = #{current.errors.to_s}&quot;</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># Return false and exit run_callbacks :save and :create/:update, so the after callback won't run.</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>  
+
+      <span class="ruby-comment"># at this point, parent_saved &amp;&amp; current_saved</span>
+      
+      <span class="ruby-identifier">is_new_record</span>(<span class="ruby-keyword">false</span>) <span class="ruby-comment"># This is no longer a new record</span>
+
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">force_changed_attributes</span>({}) <span class="ruby-comment"># Reset changed_attributes so future changes will be tracked correctly</span>
+      
+      <span class="ruby-comment"># No return, because we want the after callback to run.</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- save-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- save-method -->
+
+    
+      <div id="method-i-save-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save!</span><span
+            class="method-args">(options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save-21-source">
+            <pre><span class="ruby-comment"># File lib/citier/child_instance_methods.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save!</span>(<span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordInvalid</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">if</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:validate</span>] <span class="ruby-operator">!=</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">valid?</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">RecordNotSaved</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- save-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- save-21-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

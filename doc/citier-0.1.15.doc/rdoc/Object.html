@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=CP850" http-equiv="Content-Type">
+
+<title>class Object - citier-0.1.15 Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/citier/core_ext.rb
+    <li>lib/citier.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">BasicObject
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-citier_debug">#citier_debug</a>
+    
+    <li><a href="#method-i-create_citier_view">#create_citier_view</a>
+    
+    <li><a href="#method-i-create_or_update_citier_view">#create_or_update_citier_view</a>
+    
+    <li><a href="#method-i-drop_citier_view">#drop_citier_view</a>
+    
+    <li><a href="#method-i-update_citier_view">#update_citier_view</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Citier.html">Citier</a>
+  
+    <li><a href="./Citier/ActsAsCitier.html">Citier::ActsAsCitier</a>
+  
+    <li><a href="./Citier/ChildInstanceMethods.html">Citier::ChildInstanceMethods</a>
+  
+    <li><a href="./Citier/ClassMethods.html">Citier::ClassMethods</a>
+  
+    <li><a href="./Citier/InstanceMethods.html">Citier::InstanceMethods</a>
+  
+    <li><a href="./Citier/InstanceMethods/CitierUniquenessValidator.html">Citier::InstanceMethods::CitierUniquenessValidator</a>
+  
+    <li><a href="./Citier/InstanceMethods/ForcedWriters.html">Citier::InstanceMethods::ForcedWriters</a>
+  
+    <li><a href="./Citier/RootInstanceMethods.html">Citier::RootInstanceMethods</a>
+  
+    <li><a href="./ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="./ActiveRecord/Base.html">ActiveRecord::Base</a>
+  
+    <li><a href="./ActiveRecord/ConnectionAdapters.html">ActiveRecord::ConnectionAdapters</a>
+  
+    <li><a href="./ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html">ActiveRecord::ConnectionAdapters::PostgreSQLAdapter</a>
+  
+    <li><a href="./ActiveRecord/ConnectionAdapters/SQLiteAdapter.html">ActiveRecord::ConnectionAdapters::SQLiteAdapter</a>
+  
+    <li><a href="./ActiveRecord/Relation.html">ActiveRecord::Relation</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Object</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="CITIER_DEBUGGING">CITIER_DEBUGGING
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-citier_debug" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">citier_debug</span><span
+            class="method-args">(s)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="citier_debug-source">
+            <pre><span class="ruby-comment"># File lib/citier.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">citier_debug</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">CITIER_DEBUGGING</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;citier -&gt; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- citier_debug-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- citier_debug-method -->
+
+    
+      <div id="method-i-create_citier_view" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_citier_view</span><span
+            class="method-args">(theclass)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_citier_view-source">
+            <pre><span class="ruby-comment"># File lib/citier/core_ext.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_citier_view</span>(<span class="ruby-identifier">theclass</span>)  <span class="ruby-comment">#function for creating views for migrations </span>
+  <span class="ruby-comment"># flush any column info in memory</span>
+  <span class="ruby-comment"># Loops through and stops once we've cleaned up to our root class.</span>
+  <span class="ruby-comment"># We MUST user Writable as that is the place where changes might reside!</span>
+  <span class="ruby-identifier">reset_class</span> = <span class="ruby-identifier">theclass</span><span class="ruby-operator">::</span><span class="ruby-constant">Writable</span> 
+  <span class="ruby-keyword">until</span> <span class="ruby-identifier">reset_class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+    <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Resetting column information on #{reset_class}&quot;</span>)
+    <span class="ruby-identifier">reset_class</span>.<span class="ruby-identifier">reset_column_information</span>
+    <span class="ruby-identifier">reset_class</span> = <span class="ruby-identifier">reset_class</span>.<span class="ruby-identifier">superclass</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">self_columns</span> = <span class="ruby-identifier">theclass</span><span class="ruby-operator">::</span><span class="ruby-constant">Writable</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">select</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;id&quot;</span> }
+  <span class="ruby-identifier">parent_columns</span> = <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">column_names</span>.<span class="ruby-identifier">select</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;id&quot;</span> }
+  <span class="ruby-identifier">columns</span> = <span class="ruby-identifier">parent_columns</span><span class="ruby-operator">+</span><span class="ruby-identifier">self_columns</span>
+  <span class="ruby-identifier">self_read_table</span> = <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">table_name</span>
+  <span class="ruby-identifier">self_write_table</span> = <span class="ruby-identifier">theclass</span><span class="ruby-operator">::</span><span class="ruby-constant">Writable</span>.<span class="ruby-identifier">table_name</span>
+  <span class="ruby-identifier">parent_read_table</span> = <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">table_name</span>
+  <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;CREATE VIEW #{self_read_table} AS SELECT #{parent_read_table}.id, #{columns.join(',')} FROM #{parent_read_table}, #{self_write_table} WHERE #{parent_read_table}.id = #{self_write_table}.id&quot;</span> 
+  
+  <span class="ruby-comment">#Use our rails_sql_views gem to create the view so we get it outputted to schema</span>
+  <span class="ruby-identifier">create_view</span> <span class="ruby-node">&quot;#{self_read_table}&quot;</span>, <span class="ruby-node">&quot;SELECT #{parent_read_table}.id, #{columns.join(',')} FROM #{parent_read_table}, #{self_write_table} WHERE #{parent_read_table}.id = #{self_write_table}.id&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">v</span>.<span class="ruby-identifier">column</span> <span class="ruby-value">:id</span>
+    <span class="ruby-identifier">columns</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">v</span>.<span class="ruby-identifier">column</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Creating citier view -&gt; #{sql}&quot;</span>)
+  <span class="ruby-comment">#theclass.connection.execute sql</span>
+  
+ 
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_citier_view-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_citier_view-method -->
+
+    
+      <div id="method-i-create_or_update_citier_view" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_or_update_citier_view</span><span
+            class="method-args">(theclass)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_or_update_citier_view-source">
+            <pre><span class="ruby-comment"># File lib/citier/core_ext.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_or_update_citier_view</span>(<span class="ruby-identifier">theclass</span>) <span class="ruby-comment">#Convienience function for updating or creating views for migrations</span>
+  
+  <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Create or Update citier view for #{theclass}&quot;</span>)
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">table_exists?</span>
+    <span class="ruby-identifier">update_citier_view</span>(<span class="ruby-identifier">theclass</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;VIEW DIDN'T EXIST. Now creating for #{theclass}&quot;</span>)
+    <span class="ruby-identifier">create_citier_view</span>(<span class="ruby-identifier">theclass</span>)
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_or_update_citier_view-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_or_update_citier_view-method -->
+
+    
+      <div id="method-i-drop_citier_view" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">drop_citier_view</span><span
+            class="method-args">(theclass)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="drop_citier_view-source">
+            <pre><span class="ruby-comment"># File lib/citier/core_ext.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">drop_citier_view</span>(<span class="ruby-identifier">theclass</span>) <span class="ruby-comment">#function for dropping views for migrations </span>
+  <span class="ruby-identifier">self_read_table</span> = <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">table_name</span>
+  <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;DROP VIEW #{self_read_table}&quot;</span>
+  
+  <span class="ruby-identifier">drop_view</span>(<span class="ruby-identifier">self_read_table</span>.<span class="ruby-identifier">to_sym</span>) <span class="ruby-comment">#drop using our rails sql views gem</span>
+  
+  <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Dropping citier view -&gt; #{sql}&quot;</span>)
+  <span class="ruby-comment">#theclass.connection.execute sql</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- drop_citier_view-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- drop_citier_view-method -->
+
+    
+      <div id="method-i-update_citier_view" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_citier_view</span><span
+            class="method-args">(theclass)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_citier_view-source">
+            <pre><span class="ruby-comment"># File lib/citier/core_ext.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_citier_view</span>(<span class="ruby-identifier">theclass</span>) <span class="ruby-comment">#function for updating views for migrations</span>
+  
+  <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Updating citier view for #{theclass}&quot;</span>)
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">theclass</span>.<span class="ruby-identifier">table_exists?</span>
+    <span class="ruby-identifier">drop_citier_view</span>(<span class="ruby-identifier">theclass</span>)
+    <span class="ruby-identifier">create_citier_view</span>(<span class="ruby-identifier">theclass</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Error: #{theclass} VIEW doesn't exist.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_citier_view-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_citier_view-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

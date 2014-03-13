@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>CITIER - Home</title>
+	<link href="stylesheets/bundle_github.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/syntax.css" media="screen" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2693203-17']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+	<a href="http://github.com/peterhamilton/citier/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+	<div id="main">
+		<div id="header" class="basic" style="margin-bottom:20px">
+
+			<div class="site">
+				<div class="download">
+					<a href="http://github.com/peterhamilton/citier/zipball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/zip.png">
+					</a>
+					<a href="http://github.com/peterhamilton/citier/tarball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/tar.png">
+					</a>
+				</div>
+						<div class="topsearch">	
+							<ul class="nav logged_out" style="margin-top:20px">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="problem.html">The Problem</a></li>
+								<li><a href="existing_solutions.html">Existing Solutions</a></li>
+								<li><a href="new_solution.html">New Solution</a></li>
+								<li><a href="user_guide.html">User Guide</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="site">
+			<div class="wikistyle">
+
+<h1 id='introduction_to_citier'>Introduction to CITIER</h1>
+
+<blockquote>
+<p>UPDATE 2nd May 2011: I realise a lot of this documentation needs cleaning up, better explanation, code commenting and more. I fully intend to do this, I just need to pass my exams first, so there might be a lull in development for a few weeks. Bear with me!</p>
+</blockquote>
+
+<blockquote>
+<p>NOTE: This was a project originally started by ALTRABio. I have done substantial fixes, improvements and code refactoring to get it running smoothly and modified and changed the code a lot whilst developing my own projects, but the initial work and planning (including a fair amount of this documentation) was done by them. To quote the often heard phrase in academia: &#8220;We stand on the shoulders of giants&#8221;.</p>
+</blockquote>
+
+<p><strong>Ruby Class Inheritance &amp; Multiple Table Inheritance Embeddings : A full featured solution based on Ruby Class Inheritance &amp; Views</strong></p>
+
+<p>When trying to model a real world problem that needs some information storage into databases, programmers often face the issue which consists in mapping objects to relational databases. After a long review of Rails&#8217; existing solutions, I along with the original authors propose a new solution which has been bundled into a gem called : <strong>CITIER</strong> <strong>C</strong>lass <strong>I</strong>nheritance &amp; <strong>T</strong>able <strong>I</strong>nheritance <strong>E</strong>mbeddings for <strong>R</strong>ails</p>
+
+<p>This project is inspired by many articles and previous attempts that I and the original authors had already looked into, some of which include:</p>
+
+<ul>
+<li><a href='http://mediumexposure.com/multiple-table-inheritance-active-record/'>Multiple Table Inheritance with ActiveRecord by Maxim Chernyak</a></li>
+
+<li><a href='https://github.com/BenjaminMedia/Heritage'>Heritage Repo</a></li>
+
+<li><a href='https://github.com/brunofrank/class-table-inheritance'>class-table-inheritance Repo</a></li>
+
+<li><a href='https://github.com/rwl4/inherits_from'>inherits_from Repo</a></li>
+
+<li><a href='http://lindsaar.net/2008/3/12/multi-table-inheritance-in-rails-when-two-tables-are-one'>Mikel - lindsaar.net</a></li>
+
+<li><a href='http://rhnh.net/2010/08/15/class-table-inheritance-and-eager-loading'>Xavier Shay</a></li>
+
+<li><a href='http://rhnh.net/2010/07/02/3-reasons-why-you-should-not-use-single-table-inheritance'>Xavier Shay #2</a></li>
+
+<li><a href='http://techspry.com/ruby_and_rails/multiple-table-inheritance-in-rails-3/'>Gerry - Techspry</a></li>
+</ul>
+
+<h2 id='but_does_it_do_x'>But does it do &#8220;X&#8221;?</h2>
+
+<p>I have a list of things I want to be able to do when handling models, which most of the other solutions <em>kind</em> of cover. Usually managing one but failing on another. This solution already builds on ruby&#8217;s class inheritance so brings with it all the OO goodness! Hurrah!</p>
+
+<ul>
+<li><em>Multi Table Inheritance</em> - <strong>YES</strong></li>
+
+<li><em>Single Table Inheritance</em> - <strong>YES</strong></li>
+
+<li><em>Class Inheritance</em> - <strong>YES</strong></li>
+
+<li><em>Validators inherited from parents</em> - <strong>YES</strong></li>
+
+<li><em>Functions inherited from parents</em> - <strong>YES</strong></li>
+
+<li><em>Stuff which is really cool but I haven&#8217;t thought of yet</em> - <strong>Probably!</strong></li>
+</ul>
+
+<p><strong>Enough! This sounds awesome! Show me how it works!</strong></p>
+
+<p>Oh ok, go on then&#8230; ;)</p>
+
+<p>First install citier &amp; add to Gemfile</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>gem install citier
+</code></pre>
+</div><div class='highlight'><pre><code class='ruby'><span class='c1'># Models</span>
+<span class='k'>class</span> <span class='nc'>Product</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
+  <span class='n'>acts_as_citier</span>
+  <span class='n'>validates_presence_of</span> <span class='ss'>:name</span>
+  <span class='k'>def</span> <span class='nf'>an_awesome_product</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;I </span><span class='si'>#{</span><span class='nb'>name</span><span class='si'>}</span><span class='s2'> am an awesome product&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>Book</span> <span class='o'>&lt;</span> <span class='no'>Product</span>
+  <span class='n'>acts_as_citier</span>
+  <span class='n'>validates_presence_of</span> <span class='ss'>:title</span>
+  
+  <span class='k'>def</span> <span class='nf'>an_awesome_book</span>
+    <span class='nb'>self</span><span class='o'>.</span><span class='n'>an_awesome_product</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;A book to be precise&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>Dictionary</span> <span class='o'>&lt;</span> <span class='no'>Book</span>
+  <span class='n'>acts_as_citier</span>
+  <span class='n'>validates_presence_of</span> <span class='ss'>:language</span>
+  
+  <span class='k'>def</span> <span class='nf'>is_awesome</span>
+    <span class='nb'>self</span><span class='o'>.</span><span class='n'>an_awesome_book</span>
+    <span class='nb'>puts</span> <span class='s2'>&quot;I am a dictionary. Yeah!&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'># Migrations</span>
+<span class='k'>class</span> <span class='nc'>CreateProducts</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:products</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:type</span> <span class='c1'># Needed for citier</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:name</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>decimal</span> <span class='ss'>:price</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_table</span> <span class='ss'>:products</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>CreateBooks</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:books</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:title</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:author</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Book</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Book</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:books</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='k'>class</span> <span class='nc'>CreateDictionaries</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:dictionaries</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:language</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Dictionary</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Dictionary</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:dictionaries</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>You will see some code below only visible in development mode, preceeded by &#8220;citier -&gt; &#8221; Shows examples of creation, automatic child class identification and deletion. Also works with &#8220;delete_all&#8221;, destroy and destroy_all functions.</p>
+
+<p>A very simple app has been created as a branch to this project if you wish to have a play. It will also be used to test future functionality</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>rails console
+Loading development environment <span class='o'>(</span>Rails 3.0.7<span class='o'>)</span>
+&gt;&gt; :001 &gt; <span class='nv'>d</span> <span class='o'>=</span> Dictionary.new<span class='o'>(</span>:name<span class='o'>=</span>&gt;nil,:price<span class='o'>=</span>&gt;25.99,:title<span class='o'>=</span>&gt;nil,:language<span class='o'>=</span>&gt;nil<span class='o'>)</span>
+citier -&gt; Root Class
+citier -&gt; table_name -&gt; products
+citier -&gt; Non Root Class
+citier -&gt; table_name -&gt; books
+citier -&gt; tablename <span class='o'>(</span>view<span class='o'>)</span> -&gt; view_books
+citier -&gt; Non Root Class
+citier -&gt; table_name -&gt; dictionaries
+citier -&gt; tablename <span class='o'>(</span>view<span class='o'>)</span> -&gt; <span class='nv'>view_dictionaries</span>
+ <span class='o'>=</span>&gt; <span class='c'>#&lt;Dictionary id: nil, type: &quot;Dictionary&quot;, name: nil, price: 25, created_at: nil, updated_at: nil, title: nil, author: nil, language: nil&gt; </span>
+&gt;&gt; :002 &gt; d.valid?
+ <span class='o'>=</span>&gt; <span class='nb'>false</span> 
+&gt;&gt; :003 &gt; d.errors
+ <span class='o'>=</span>&gt; <span class='c'>#&lt;OrderedHash {:language=&gt;[&quot;can&#39;t be blank&quot;], :name=&gt;[&quot;can&#39;t be blank&quot;], :title=&gt;[&quot;can&#39;t be blank&quot;]}&gt; </span>
+&gt;&gt; :004 &gt; <span class='nv'>d</span> <span class='o'>=</span> Dictionary.new<span class='o'>(</span>:name<span class='o'>=</span>&gt;<span class='s2'>&quot;Ox. Eng. Dict&quot;</span>,:price<span class='o'>=</span>&gt;25.99,:title<span class='o'>=</span>&gt;<span class='s2'>&quot;The Oxford English Dictionary&quot;</span>,:language<span class='o'>=</span>&gt;<span class='s2'>&quot;English&quot;</span><span class='o'>)</span>
+ <span class='o'>=</span>&gt; <span class='c'>#&lt;Dictionary id: nil, type: &quot;Dictionary&quot;, name: &quot;Ox. Eng. Dict&quot;, price: 25, created_at: nil, updated_at: nil, title: &quot;The Oxford English Dictionary&quot;, author: nil, language: &quot;English&quot;&gt; </span>
+&gt;&gt; :005 &gt; d.valid?
+ <span class='o'>=</span>&gt; <span class='nb'>true</span>
+&gt;&gt; :006 &gt; d.is_awesome<span class='o'>()</span>
+I Ox. Eng. Dict am an awesome product
+A book to be precise
+I am a dictionary. Yeah!
+<span class='o'>=</span>&gt; nil
+&gt;&gt; :007 &gt; d.save<span class='o'>()</span>
+citier -&gt; Non-Root Class Dictionary
+citier -&gt; Non-Root Class Book
+citier -&gt; UPDATE products SET <span class='nb'>type</span> <span class='o'>=</span> <span class='s1'>&#39;Product&#39;</span> WHERE <span class='nv'>id</span> <span class='o'>=</span> 1
+citier -&gt; SQL : UPDATE products SET <span class='nb'>type</span> <span class='o'>=</span> <span class='s1'>&#39;Book&#39;</span> WHERE <span class='nv'>id</span> <span class='o'>=</span> 1
+citier -&gt; SQL : UPDATE products SET <span class='nb'>type</span> <span class='o'>=</span> <span class='s1'>&#39;Dictionary&#39;</span> WHERE <span class='nv'>id</span> <span class='o'>=</span> <span class='nv'>1</span>
+ <span class='o'>=</span>&gt; <span class='nb'>true</span> 
+&gt;&gt; :008 &gt; Dictionary.all<span class='o'>()</span>
+ <span class='o'>=</span>&gt; <span class='o'>[</span><span class='c'>#&lt;Dictionary id: 1, type: &quot;Dictionary&quot;, name: &quot;Ox. Eng. Dict&quot;, price: 25, created_at: &quot;2011-04-28 22:46:23&quot;, updated_at: &quot;2011-04-28 22:46:23&quot;, title: &quot;The Oxford English Dictionary&quot;, author: nil, language: &quot;English&quot;&gt;] </span>
+&gt;&gt; :009 &gt; Product.all<span class='o'>()</span>
+ <span class='o'>=</span>&gt; <span class='o'>[</span><span class='c'>#&lt;Dictionary id: 1, type: &quot;Dictionary&quot;, name: &quot;Ox. Eng. Dict&quot;, price: 25, created_at: &quot;2011-04-28 22:46:23&quot;, updated_at: &quot;2011-04-28 22:46:23&quot;, title: &quot;The Oxford English Dictionary&quot;, author: nil, language: &quot;English&quot;&gt;] </span>
+&gt;&gt; :010 &gt; <span class='nv'>d</span> <span class='o'>=</span> Dictionary.all<span class='o'>()</span>.first<span class='o'>()</span>
+ <span class='o'>=</span>&gt; <span class='c'>#&lt;Dictionary id: 1, type: &quot;Dictionary&quot;, name: &quot;Ox. Eng. Dict&quot;, price: 25, created_at: &quot;2011-04-28 22:46:23&quot;, updated_at: &quot;2011-04-28 22:46:23&quot;, title: &quot;The Oxford English Dictionary&quot;, author: nil, language: &quot;English&quot;&gt; </span>
+&gt;&gt; :011 &gt; d.delete<span class='o'>()</span>
+citier -&gt; Deleting Dictionary with ID 1
+citier -&gt; Deleting back up hierarchy Dictionary
+citier -&gt; Deleting back up hierarchy <span class='nv'>Book</span>
+ <span class='o'>=</span>&gt; <span class='nb'>true</span> 
+&gt;&gt; :012 &gt; Dictionary.all<span class='o'>()</span>
+ <span class='o'>=</span>&gt; <span class='o'>[]</span>
+</code></pre>
+</div>
+
+</div>
+
+		</div>
+
+		<div class="push"></div>
+	</div>
+
+	<div id="footer">
+		<div class="site">
+
+			<div class="info">
+				<div class="links">
+					<a href="http://www.github.com/peterhamilton/"><b>Peter Hamilton</b></a> - Inspired & Original Code by <a href="http://www.altrabio.com/"><b>ALTRABio</b></a> | Design based on <a href="http://pages.github.com/"><b>Github Pages</b></a>
+				</div>
+				<div class="company">
+					The CITIER gem is delivered under MIT License. 
+					<br/>
+					Authors: P. Hamilton, L. Buffat, P.E. Jouve
+					<br/>
+					Contact peter[at]inspiredpixel.net
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

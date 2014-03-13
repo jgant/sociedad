@@ -1,0 +1,21 @@
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="field">
+	<%= f.label :cuenta_correo %><br/>
+	<%= f.email_field :email %>
+</div class="field">
+
+<div class="field">
+	<%= f.label :contraseña %><br/>
+	<%= f.password_field :password %>
+</div>
+
+<div class="field">
+	<%= f.label :confirmación_contraseña %><br/>
+	<%= f.password_field :password_confirmation %>
+</div><br/>
+<div class="actions">
+	<%= f.submit 'Registrar' %>
+</div>
+<% end %>

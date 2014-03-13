@@ -1,0 +1,26 @@
+<div id="persona_list">
+	<% @page_title = t('.titulo_lista') %>
+	<table>
+		<tr>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		<% @personas.each do |persona| %>
+		<tr class=" <%= cycle('list_line_odd' , 'list_line_even' ) %>" >
+			<td><%= persona.nombre %></td>
+			<td><%= persona.apellidos %></td>
+			<td><%= link_to t('.detalles'), persona %></td>
+			<td><%= link_to t('.modificar'), edit_persona_path(persona) %></td>
+			<td><%= link_to t('.borrar'), persona, method: :delete, data: {confirm: "¿Está vd. seguro?"} %></td>
+		</tr>
+		<% end %>
+	</table>
+	<br />
+	<%= will_paginate @personas  %>
+	<br />
+	<%= link_to 'Persona nueva', new_persona_path %>
+</div>

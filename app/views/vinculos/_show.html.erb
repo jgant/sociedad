@@ -1,0 +1,5 @@
+<td> <%= p.vinculado.id == @persona.id ?
+  "#{p.vinculador.nombre} #{p.vinculador.apellidos}" :
+  "#{p.vinculado.nombre} #{p.vinculado.apellidos}" %> </td>
+	<td><%= p.desde.blank? ? '' : ", #{p.desde.strftime("%d/%m/%Y")}" %></td>
+	<td><%= p.hasta.blank? ? '' : "- #{p.hasta.strftime("%d/%m/%Y")}" %></td>

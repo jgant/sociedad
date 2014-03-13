@@ -1,0 +1,17 @@
+<% content_for :content do %>
+<div id="persona">
+	<p>
+		<%= link_to 'Modificar perfil', edit_persona_path(@persona) %>
+	</p>
+</div>
+<hr />
+<div id="lista">
+	<%= link_to 'Parejas', vinculos_path(:vinculos => 'parejas')  %>
+</div>
+<div id="main2">
+	<%= content_for?(:vinculos_content) ? yield(:vinculos_content) : yield %>
+	<hr />
+	<%= link_to 'Volver', personas_path %>
+</div>
+<% end %>
+<%= render :template => 'layouts/application' %>

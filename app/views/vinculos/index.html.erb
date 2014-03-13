@@ -1,0 +1,6 @@
+<% @page_title = "#{@persona.nombre} #{@persona.apellidos}" %>
+<p>
+	<%= self.nombre_partial.nil? ?
+  "Seleccione en la lista el tipo de relaciones de #{@persona.nombre} que quiere ver." : 
+  (render :partial => nombre_partial) %>
+</p>

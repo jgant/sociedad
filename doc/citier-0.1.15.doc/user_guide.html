@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>CITIER - User Guide</title>
+	<link href="stylesheets/bundle_github.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/syntax.css" media="screen" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2693203-17']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+	<a href="http://github.com/peterhamilton/citier/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+	<div id="main">
+		<div id="header" class="basic" style="margin-bottom:20px">
+
+			<div class="site">
+				<div class="download">
+					<a href="http://github.com/peterhamilton/citier/zipball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/zip.png">
+					</a>
+					<a href="http://github.com/peterhamilton/citier/tarball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/tar.png">
+					</a>
+				</div>
+						<div class="topsearch">	
+							<ul class="nav logged_out" style="margin-top:20px">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="problem.html">The Problem</a></li>
+								<li><a href="existing_solutions.html">Existing Solutions</a></li>
+								<li><a href="new_solution.html">New Solution</a></li>
+								<li><a href="user_guide.html">User Guide</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="site">
+			<div class="wikistyle">
+
+<h1 id='citier_user_guide'>CITIER User Guide</h1>
+
+<p>We give here the details to use our solution. Note that a functional web app implementing the multimedia library example is available here. It may be worth having a look at it since each specific code entry necessitated by the use of our plugin has been associated with a “#needed for CITIER&#8221; comment. Moreover some extra Comments &amp; BookComments objects have been added to exhibit that Callbacks functionalities are also available (in fact every ActiveRecord facility should be available). Installing this app and getting into code may be a good way to understand how to use our gem.</p>
+
+<p>You should follow the next steps to use CITIER:</p>
+
+<ol>
+<li>
+<p>Install citier gem</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span>gem install citier
+</code></pre>
+</div>
+<p>or add it to your Gemfile</p>
+</li>
+
+<li>
+<p>Model your class inheritance hierarchy <a href='problem.html'>Our Example</a></p>
+</li>
+
+<li>
+<p>Once your class inheritance hierarchy is modeled : determine what we will call the <em>role</em> of each class. There are 3 kind of <em>roles</em>:</p>
+
+<ul>
+<li><strong>&#8220;root class&#8221;</strong> : the “root class&#8221; is the class which will inherit from ActiveRecord::Base and from which all of your modeled classes derive. In our example Media is the “root class&#8221;.</li>
+
+<li><strong>&#8220;class with specific attribute(s)&#8221;</strong> : this stands for classes that do have specific attributes (attributes that are not included in the classes they derive from). In our example Audio, Video, Book, Novel, Dictionary are &#8220;classes with specific attribute(s)&#8221;.</li>
+
+<li><strong>&#8220;class without specific attribute(s)&#8221;</strong> : this stands for classes that do NOT have specific attributes. In our example Mp3, PocketDictionary, Unknown are &#8220;classes without specific attribute(s)&#8221;.</li>
+</ul>
+</li>
+
+<li>
+<p>Once roles are determined : determine the database schema (it is better if this schema is such that it avoids duplication (see for instance <a href='new_solution.html'>our example</a>). Note that the table associated to the root class requires one extra columns that we will call inheritance_column (our solution uses notably Rails Single Table Inheritance facility). (To sum up : the “root class&#8221; necessitates a table with columns : id, inheritance_column and a column per attribute ; each &#8220;class with specific attribute(s)&#8221; necessitates a table with columns : id and a column per specific attribute) For our example, this mean that we need 6 tables :</p>
+
+<ul>
+<li>Table medias with columns id, inheritance_column, price and name. The column "inheritance_column" contains the class name of the (sub) class. Default value of the column name is "type", you can use another column name, in that case use the option "db_type_field => new name" in the acts_as_citier in the corresponding model class.</li>
+
+<li>Table audio with columns id, title and genre</li>
+
+<li>Table videos with columns id, title and genre</li>
+
+<li>Table tablebooks with columns id, title and author</li>
+
+<li>Table novels with columns id and summary</li>
+
+<li>Table dictionaries with columns id, language1, and language2</li>
+</ul>
+</li>
+
+<li>
+<p>Determine views that are needed (one per ”class with specific attribute(s)”) (see for instance our example) . Such views may be created thanks to the provided function create_citier_view(class) or dropped with the provided function drop_citier_view(class). For our example, this mean that we need 5 views :</p>
+
+<ul>
+<li>View view_audios (which may be generated by create_citier_view(Audio))</li>
+
+<li>View view_videos (which may be generated by create_citier_view(Video))</li>
+
+<li>View view_tablebooks (which may be generated by create_citier_view(Book))</li>
+
+<li>View view_novels (which may be generated by create_citier_view(Novel))</li>
+
+<li>View view_dictionaries (which may be Generated by create_citier_view(Dictionary))</li>
+</ul>
+</li>
+
+<li>
+<p>Write the migrations needed for establishing the database schema (tables &amp; views) For our example this would mean generating the following migrations:</p>
+<div class='highlight'><pre><code class='ruby'>	
+<span class='k'>class</span> <span class='nc'>CreateMedias</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:medias</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:inheritance_column_name</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:name</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>integer</span> <span class='ss'>:price</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_table</span> <span class='ss'>:medias</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>CreateBooks</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:tablebooks</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:title</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:author</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Book</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Book</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:books</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>CreateDictionaries</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:dictionaries</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:lf</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:lt</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Dictionary</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Dictionary</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:dictionaries</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>CreateNovels</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:novels</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:summary</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Novel</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Novel</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:novels</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>CreateVideos</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:videos</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:title</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:genre</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Video</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Video</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:videos</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>CreateAudios</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Migration</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>up</span>
+    <span class='n'>create_table</span> <span class='ss'>:audios</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>t</span><span class='o'>|</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:title</span>
+      <span class='n'>t</span><span class='o'>.</span><span class='n'>string</span> <span class='ss'>:genre</span>
+    <span class='k'>end</span>
+    <span class='n'>create_citier_view</span><span class='p'>(</span><span class='no'>Audio</span><span class='p'>)</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>down</span>
+    <span class='n'>drop_citier_view</span><span class='p'>(</span><span class='no'>Audio</span><span class='p'>)</span>
+    <span class='n'>drop_table</span> <span class='ss'>:audios</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+
+
+</code></pre>
+</div></li>
+
+<li>
+<p>Now you have to indicate for each classes its role. This is done into your models definitions by adding the special phrase : “acts_as_citier” only for the root_class and for each ”class with specific attribute(s)”. This special phrase may be accompanied by an optional option hash : . Note that default values for these options are respectively the pluralized name of the class for :table_name and &#8216;type&#8217; for :db_type_field. For our example this would imply the following:</p>
+<div class='highlight'><pre><code class='ruby'>	
+<span class='c1'># Default values are used there since the table associated to Media class is medias </span>
+<span class='c1'># and the inheritance column is named type in the following models definitions we </span>
+<span class='c1'># won&#39;t mention that the default value is used for :db_\type\_field and will only </span>
+<span class='c1'># mention non default value for :table name when needed</span>
+	
+<span class='k'>class</span> <span class='nc'>Media</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
+  <span class='n'>acts_as_citier</span> 
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Audio</span> <span class='o'>&lt;</span> <span class='no'>Media</span>
+  <span class='n'>acts_as_citier</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Mp3</span> <span class='o'>&lt;</span> <span class='no'>Audio</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='c1'># Here we need to specify :table_name=&gt;&#39;books&#39; since the table associated to Book class </span>
+<span class='c1'># is tablebooks and not book</span>
+
+<span class='k'>class</span> <span class='nc'>Book</span> <span class='o'>&lt;</span> <span class='no'>Media</span>
+  <span class='n'>acts_as_citier</span> <span class='ss'>:table_name</span><span class='o'>=&gt;</span><span class='s1'>&#39;tablebooks&#39;</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Dictionary</span> <span class='o'>&lt;</span> <span class='no'>Book</span>
+  <span class='n'>acts_as_citier</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Novel</span> <span class='o'>&lt;</span> <span class='no'>Book</span>
+  <span class='n'>acts_as_citier</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>PocketDictionary</span> <span class='o'>&lt;</span> <span class='no'>Dictionary</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Unknown</span> <span class='o'>&lt;</span> <span class='no'>Media</span>
+<span class='k'>end</span>
+
+<span class='c1'>################################################</span>
+
+<span class='k'>class</span> <span class='nc'>Video</span> <span class='o'>&lt;</span> <span class='no'>Media</span>
+  <span class='n'>acts_as_citier</span>
+<span class='k'>end</span>
+
+</code></pre>
+</div></li>
+</ol>
+
+<p>Now you should be good to go treating your Models like normal. Asking for root/parent objects will correctly interpret them as children. E.G Media.all() could return an array of Dictionary, Book etc all in one.</p>
+
+<h2 id='final_notes'>Final Notes</h2>
+
+<p>Whenever you modify a table (adding removing columns) please consider (if necessary) to update the (eventually) corresponding view. This can be done by successively Dropping and re-Creating the view (thanks to the drop_citier_view and create_citier_view methods)</p>
+
+<p>We encourage you to try, test, use, enhance and document this gem. If you do, please give me some feed back at: peter@inspiredpixel.net</p>
+
+</div>
+
+		</div>
+
+		<div class="push"></div>
+	</div>
+
+	<div id="footer">
+		<div class="site">
+
+			<div class="info">
+				<div class="links">
+					<a href="http://www.github.com/peterhamilton/"><b>Peter Hamilton</b></a> - Inspired & Original Code by <a href="http://www.altrabio.com/"><b>ALTRABio</b></a> | Design based on <a href="http://pages.github.com/"><b>Github Pages</b></a>
+				</div>
+				<div class="company">
+					The CITIER gem is delivered under MIT License. 
+					<br/>
+					Authors: P. Hamilton, L. Buffat, P.E. Jouve
+					<br/>
+					Contact peter[at]inspiredpixel.net
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

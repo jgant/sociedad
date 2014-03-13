@@ -1,0 +1,35 @@
+<% if @vinculo.errors.any? %>
+	<div id="error_explanation">
+		<b><%= pluralize(@vinculo.errors.count, "error") %> 
+		  <%= @vinculo.errors.count >1 ? 'impiden' : 'impide' %> que esta relacion se guarde:</b>
+		<ul>
+		  <% @vinculo.errors.full_messages.each do |msg| %>
+		    <li><%= msg %></li>
+		  <% end %>
+		</ul>
+	</div>
+<% end %>
+<%= f.hidden_field :vinculador_id %>
+<%= f.hidden_field :type %>
+<div class="field">
+  Nombre<br />
+  <%= f.collection_select(:vinculado_id, Persona.all, :id, :apellidos_nombre,
+    {:prompt => 'Seleccione persona', :disabled => @persona.apellidos_nombre}) %>
+  o introduzca una <%= link_to "nueva persona", new_persona_path %>.
+</div>
+<table>
+	<tr>
+		<div class="field">
+			<td><%= f.label :desde %></td>
+			<td><%= f.label :hasta %></td>
+		</div>
+	</tr>
+	<tr>
+		<div class="field">
+			<td><%= f.date_select(:desde, :include_blank => true,
+				:start_year => Time.now.year, :end_year => Time.now.year - 60) %></td>
+			<td><%= f.date_select(:hasta, :include_blank => true,
+				:start_year => Time.now.year, :end_year => Time.now.year - 60) %></td>
+		</div>
+	</tr>
+</table>

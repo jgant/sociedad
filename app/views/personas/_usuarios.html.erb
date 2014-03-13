@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Cuenta de correo</th>
+		<th>Contraseña</th>
+		<th>Confirmación</th>
+	</tr>
+	<%= f.fields_for :usuarios do |u_fields|%>
+		<%= devise_error_messages! %>
+		<%= render partial: 'usuario_fields', locals: {f: u_fields} %>
+	<% end %>
+</table>
+<p><%= link_to_add_fields("Nueva cuenta", f, :usuarios) %></p>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=CP850" http-equiv="Content-Type">
+
+<title>class ActiveRecord::ConnectionAdapters::SQLiteAdapter - citier-0.1.15 Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/citier/sql_adapters.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">AbstractAdapter
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-tables">#tables</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Citier.html">Citier</a>
+  
+    <li><a href="../../Citier/ActsAsCitier.html">Citier::ActsAsCitier</a>
+  
+    <li><a href="../../Citier/ChildInstanceMethods.html">Citier::ChildInstanceMethods</a>
+  
+    <li><a href="../../Citier/ClassMethods.html">Citier::ClassMethods</a>
+  
+    <li><a href="../../Citier/InstanceMethods.html">Citier::InstanceMethods</a>
+  
+    <li><a href="../../Citier/InstanceMethods/CitierUniquenessValidator.html">Citier::InstanceMethods::CitierUniquenessValidator</a>
+  
+    <li><a href="../../Citier/InstanceMethods/ForcedWriters.html">Citier::InstanceMethods::ForcedWriters</a>
+  
+    <li><a href="../../Citier/RootInstanceMethods.html">Citier::RootInstanceMethods</a>
+  
+    <li><a href="../../ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="../../ActiveRecord/Base.html">ActiveRecord::Base</a>
+  
+    <li><a href="../../ActiveRecord/ConnectionAdapters.html">ActiveRecord::ConnectionAdapters</a>
+  
+    <li><a href="../../ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html">ActiveRecord::ConnectionAdapters::PostgreSQLAdapter</a>
+  
+    <li><a href="../../ActiveRecord/ConnectionAdapters/SQLiteAdapter.html">ActiveRecord::ConnectionAdapters::SQLiteAdapter</a>
+  
+    <li><a href="../../ActiveRecord/Relation.html">ActiveRecord::Relation</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ActiveRecord::ConnectionAdapters::SQLiteAdapter</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-tables" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tables</span><span
+            class="method-args">(name = 'SCHEMA', table_name = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tables-source">
+            <pre><span class="ruby-comment"># File lib/citier/sql_adapters.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tables</span>(<span class="ruby-identifier">name</span> = <span class="ruby-string">'SCHEMA'</span>, <span class="ruby-identifier">table_name</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">sql</span> = <span class="ruby-value">&lt;&lt;-SQL
+  SELECT name
+  FROM sqlite_master
+  WHERE (type = 'table' or type='view') AND NOT name = 'sqlite_sequence'
+  SQL</span>
+  <span class="ruby-comment"># Modification : the where clause was intially WHERE type = 'table' AND NOT name = 'sqlite_sequence' </span>
+  <span class="ruby-comment">#                now it is WHERE (type = 'table' or type='view') AND NOT name = 'sqlite_sequence'</span>
+  <span class="ruby-comment"># this modification is made to consider tables AND VIEWS as tables</span>
+  <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; AND name = #{quote_table_name(table_name)}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">table_name</span>
+
+  <span class="ruby-identifier">execute</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">name</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">row</span>[<span class="ruby-string">'name'</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- tables-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- tables-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

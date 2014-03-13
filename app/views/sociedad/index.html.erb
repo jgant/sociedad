@@ -1,0 +1,47 @@
+<h2>Objetivo</h2>
+<p>
+	Aprender Ruby on Rails.
+</p>
+<h2>Metodología</h2>
+<p>
+	Para aprender he seguido primero el desarrollo del sistema 'Depot' en el libro "Agile Web Development".
+	Este libro enseña paso a paso como se construye un sistema con Ruby on Rails. El ejemplo escogido
+	es una tienda electrónica en Internet que vende libros. El sistema ofrece al propietario funcionalidad para
+	gestionar la tienda en donde los visitantes pueden comprar libros.<br/>
+	Además de aprender el lenguaje de programación Ruby basado en objetos con el nuevo método de desarrollo ágil de
+	sistemas, se aprende la construcción de sistemas en la web con el paradigma M(odel)V(iew)C(ontroller).<br/>
+	Después de esta introducción comencé a desarrollar otro sistema: 'Sociedad'. Este sistema registra los miembros de
+	una sociedad y de los vínculos entre ellos. Estos miembros pueden ser personas individuales u organizaciones.
+</p>
+<h2>El sistema Sociedad</h2>
+<h3>Modelo de objetos</h3>
+<h3>Autentificación y autorización</h3>
+Reglas de autentificación: 
+<ul>
+	<li>Elke usuario del sistema debe estar registrado para hacer uso del sistema.</li> 
+	<li>Se registran los siguientes datos del usuario: nombre, fecha y lugar de nacimiento, cuenta de correo electrónico 
+		y contraseña.</li>
+	<li>El usuario se identifica con la cuenta de correo eléctronico y la contraseña.</li> 
+	<li>Cuenta de correo eléctronico y contraseña son únicos en el sistema.</li>
+	<li>Nombre, fecha y lugar de nacimiento son únicos por cada persona registrada.</li>
+	<li>La misma persona puede tener como usuario diferentes correos eléctronicos y contraseñas.</li>
+</ul>
+Reglas de autorización:
+<ul>
+	<li>Toda persona puede registrarse como usuario.</li>
+	<li>Toda persona puede registrar, modificar y borrar sus datos personales, sus datos de usuario y 
+		todos sus  vínculos con otras personas registradas.</li>
+	<li>Toda persona puede consultar sus datos personales, sus datos de usuario, sus vínculos y los datos 
+		de las personas y organizaciones con las que está vinculado.</li>
+	<li>Toda persona puede registrar los datos de una organización. Automáticamente se convierte en el 
+		administrador de esa organización.</li>
+	<li>El administrador de una organización puede registrar, modificar y borrar vínculos de su 
+		organización con otras organizaciones y personas registradas.</li>
+	<li>El administrador de una organización puede consultar los datos de su organización, de los vínculos de ésta 
+		y los datos de personas y organizaciones vinculadas.</li>	 
+</ul>
+<p>
+	Para entrar en Sociedad pulse <%= link_to 'entrar', new_usuario_session_path %>.<br/>
+	Para registrarse pulse <%= link_to 'registro', new_persona_path %>.<br/>
+	<p>Find me in app/views/sociedad/index.html.erb</p>
+</p>

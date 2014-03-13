@@ -1,0 +1,9 @@
+<% content_for :links do %>
+<div id="persona">
+	<p><%= link_to 'Modificar perfil', edit_persona_path(@persona) %></p>
+</div>
+<hr />
+<div id="lista">
+	<%= link_to 'Parejas', vinculos_path(:vinculos => 'parejas')  %>
+</div>
+<% end %>

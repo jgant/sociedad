@@ -1,0 +1,2 @@
+module SociedadHelper
+end

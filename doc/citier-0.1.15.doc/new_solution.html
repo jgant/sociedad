@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>CITIER - New Solution</title>
+	<link href="stylesheets/bundle_github.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/syntax.css" media="screen" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2693203-17']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+	<a href="http://github.com/peterhamilton/citier/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+	<div id="main">
+		<div id="header" class="basic" style="margin-bottom:20px">
+
+			<div class="site">
+				<div class="download">
+					<a href="http://github.com/peterhamilton/citier/zipball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/zip.png">
+					</a>
+					<a href="http://github.com/peterhamilton/citier/tarball/master">
+						<img border="0" width="90" src="http://github.com/images/modules/download/tar.png">
+					</a>
+				</div>
+						<div class="topsearch">	
+							<ul class="nav logged_out" style="margin-top:20px">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="problem.html">The Problem</a></li>
+								<li><a href="existing_solutions.html">Existing Solutions</a></li>
+								<li><a href="new_solution.html">New Solution</a></li>
+								<li><a href="user_guide.html">User Guide</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="site">
+			<div class="wikistyle">
+
+<h1 id='a_new_solution'>A New Solution</h1>
+
+<p><strong>Embedding Ruby Class Inheritance &amp; Multiple Table Inheritance through use of Ruby Class Inheritance &amp; Databases Views</strong></p>
+
+<p>As for now, we have seen that except the Database Management System based solutions which may be based upon a special feature of PostgreSQL RDBMS (and which intrinsically rely on the use of PostgreSQL) there is no completely satisfying solution for solving our class inheritance and multiple table inheritance problem. We have recently decided to create a plugin that would allow solving such a problem. Our solution named CITIER was designed after a close look at the existing solutions and we want to thank here their authors for letting their code at community&#8217;s disposal. We won&#8217;t get here into a deep technical explanation of how our solution works but just give some very low level insights (maybe in near future we&#8217;ll provide some more details ; yet, interested reader should refer to our commentated code, which can be grabbed here). Thereafter, we first introduce features offered by our solution, give some brief informations related to the basic ideas that drove us for implementing this solution, and finally explain how to use it. Obviously, the explanations concerning the implementation of this solution may be not clear enough, but you could still skip them and still use our gem efficiently. Maybe, the best idea to understand completely the job done would be to investigate the commentated code.</p>
+
+<h2 id='a_full_featured_solution'>A Full Featured Solution</h2>
+
+<ul>
+<li>
+<p>Not RDBMS dependent This solution can be used with probably every RDBMS (actually, we only tested with SQLite, MySQL and PostgreSQL, but it should work with other RDBMS with very minor changes). This feature is obviously not included in RDBMS based solutions.</p>
+</li>
+
+<li>
+<p>Real Ruby Class Inheritance &amp; Real is_a relationships : This solution is firstly based on Ruby&#8217;s class inheritance. For our example, the inheritance hierachy is the one that a programmer would expect (see it here). This means that if you have defined some instance methods/variables or class methods/variables in a superclass you can have a natural access to it. This also means that a real &#8220;is_a&#8221; relationship is used and that multi level inheritance hierarchy can be modeled. This feature is not included in any other solution.</p>
+</li>
+
+<li>
+<p>Efficient Storing : To efficiently store attributes of modeled classes, the database schema used respects the class inheritance. The database schema is such that no information is stored twice. To do so we create a table for each node of the class hierarchy such that the node has at least one specific attribute (specific attributes of a class are attributes that are not included into its superclass). For our example that means that we have a schema with the following tables :</p>
+
+<ul>
+<li>Table1 (we call it &#8216;medias&#8217; through the rest of this post) which is associated to the Media class node for storing &#8216;price&#8217; and &#8216;name&#8217; attributes (for Media class and all its derivated classes : Audio, Mp3, Video, Book, Novel, Dictionary, Pocket Dictionary, Unknown)</li>
+
+<li>Table2 (we call it &#8216;audios&#8217; through the rest of this post) which is associated to the Audio class node for storing &#8216;title&#8217; and &#8216;genre&#8217; attributes (for Audio class and all its derivated class Mp3)</li>
+
+<li>Table3 (we call it &#8216;videos&#8217; through the rest of this post) which is associated to the Video class node for storing &#8216;title&#8217; and &#8216;genre&#8217; attributes (for Video class)</li>
+
+<li>Table4 (we call it &#8216;tablebooks&#8217; through the rest of this post) which is associated to the Book class node for storing &#8216;author&#8217; and &#8216;title&#8217; attributes (for Book class and all its derivated classes : Novel, Dictionary, Pocket Dictionary, Unknown)</li>
+
+<li>Table5 (we call it &#8216;novels&#8217; through the rest of this post) which is associated to the Novel class node for storing &#8216;summary&#8217; attribute (for Novel class)</li>
+
+<li>Table6 (we call it &#8216;dictionaries&#8217; through the rest of this post) which is associated to the Dictionary class node for storing &#8216;language1&#8217; and &#8216;language2&#8217; attributes (for Dictionary class and all its derivated class : Pocket Dictionary)</li>
+</ul>
+</li>
+</ul>
+
+<p>Note that no Table is associated to Mp3, PocketDictionary, Unknown nodes since they don&#8217;t have any specific attribute. With such a schema we are able to store efficiently the attributes of each class instances. This feature is not included in Single Table Based solutions.</p>
+
+<p><strong>Database Schema</strong> <img src='images/database_schema.gif' alt='Database Schema' /></p>
+
+<h2 id='solution_philosophy'>Solution Philosophy</h2>
+
+<p>The philosophy used to implement this solution is the following, for each node of the class hierarchy (<a href='http://altrabio.github.com/CITIER/index.html#classhierarchy'>see it here</a>) (does not depend on the fact that it has or not any specific attribute) we would like to use ActiveRecord facilities to manipulate it (this means using ActiveRecord facilities to save an object, update an object, load an object, read an object&#8217;s attributes, destroy an object&#8230;). Using classically ActiveRecords would imply to use a specific table for each class, yet this would not respect the constraints required related to the storage. (this would not fit with our database schema constraints defined before, <a href='http://altrabio.github.com/CITIER/index.html#databaseschema'>see it here</a>).</p>
+
+<p>So what we propose here is just to have a mechanism that fake the existence of these tables while not requiring them. Our solution is actually based on a database schema such as the one needed.</p>
+
+<p>The idea is basically to use the database schema proposed and to associate one/several defined tables for each class node of the hierarchy (this tables will be used for saving/storing/updating informations for objects) and to associate to each class node one virtual table (database views) or a table that will be accessed for loading/reading informations. Then the idea is to override some ActiveRecord methods in order to propose to the user a classical use of ActiveRecord functionalities. The overriding will in fact consists in switching from the virtual table (the view) to the real tables whenever it is needed. You need the virtual table for loading/reading informations and the real tables for saving/updating informations. This is not clear ? Hopefully the use of the gem does not need any good understanding of how it works, and furthermore won&#8217;t change your habits as far as the use of ActiveRecord functionalities are concerned. Yet I just give know some simple drawings that try to illustrate what happen behind the curtains when using our gem: <strong>Database Views</strong> <img src='images/database_views.gif' alt='Database Views' /></p>
+
+<p>For a detailed picture what the class heirarchy &amp; associated tables/views look like, see below (click to enlarge).</p>
+
+<p><a href='images/class_hierarchy_and_views.gif'><img src='images/class_hierarchy_and_views.gif' alt='Class Hierarchy and Views' /></a></p>
+
+</div>
+
+		</div>
+
+		<div class="push"></div>
+	</div>
+
+	<div id="footer">
+		<div class="site">
+
+			<div class="info">
+				<div class="links">
+					<a href="http://www.github.com/peterhamilton/"><b>Peter Hamilton</b></a> - Inspired & Original Code by <a href="http://www.altrabio.com/"><b>ALTRABio</b></a> | Design based on <a href="http://pages.github.com/"><b>Github Pages</b></a>
+				</div>
+				<div class="company">
+					The CITIER gem is delivered under MIT License. 
+					<br/>
+					Authors: P. Hamilton, L. Buffat, P.E. Jouve
+					<br/>
+					Contact peter[at]inspiredpixel.net
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

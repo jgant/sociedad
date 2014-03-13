@@ -1,0 +1,12 @@
+<b>Detalles de pareja:</b>
+<br />
+<table>
+	<tr>
+		<%= render :partial => 'vinculos/show', :locals => {:p => @vinculo} %>
+		<td><%= "#{@vinculo.get_tipo_pareja}" %></td>
+	</tr>
+</table>
+<p>
+	<%= link_to 'Modificar', edit_vinculo_path(:persona_id => @persona.id, :vinculos => 'parejas') %> |
+	<%= link_to 'Volver', vinculos_path(:vinculos => 'parejas') %>
+</p>

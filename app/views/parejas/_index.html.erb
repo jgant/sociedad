@@ -1,0 +1,15 @@
+<b><%= if @vinculos.blank? then "No tiene pareja registrada." else "Parejas de #{@persona.nombre}:" end %></b>
+<table>
+	<% @vinculos.each do |p| %>
+	<tr>
+	  <%= render :partial => 'vinculos/show', :locals => {:p => p} %>
+    <td><%= "#{p.get_tipo_pareja}  " %></td>    
+	<td> <%= link_to 'Detalles', vinculo_path(:id => p) %></td>
+    <td><%= link_to t('.modificar'), edit_vinculo_path(p) %></td>
+    <td><%= link_to t('.borrar'), vinculo_path(:id => p), method: :delete, data: {confirm: "¿Está vd. seguro?"} %></td>
+	</tr>
+	<% end %>
+</table>
+<br />
+<br />
+<%= link_to 'Nueva pareja', new_vinculo_path(:vinculos => 'parejas') %>

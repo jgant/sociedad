@@ -1,0 +1,25 @@
+<%= form_for(@persona) do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error")%> 
+      	<%= pluralize(@persona.errors.count, 'impide'%> el registro de esta persona:</h2>
+      <ul>
+		    <% @persona.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre, :autofocus => true %>
+  </div>
+  <div class="field">
+    <%= f.label :apellidos %><br />
+    <%= f.text_field :apellidos %>
+  </div>
+  <%= render partial: 'usuarios', locals: {f: f} %>
+  <div class="actions">
+	<%= f.submit 'Registrar' %>
+  </div>
+<% end %>

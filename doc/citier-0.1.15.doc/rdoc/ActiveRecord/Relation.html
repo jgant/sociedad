@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=CP850" http-equiv="Content-Type">
+
+<title>class ActiveRecord::Relation - citier-0.1.15 Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/citier/relation_methods.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../Object.html">Object</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-apply_finder_options">#apply_finder_options</a>
+    
+    <li><a href="#method-i-delete_all">#delete_all</a>
+    
+    <li><a href="#method-i-relation_apply_finder_options">#relation_apply_finder_options</a>
+    
+    <li><a href="#method-i-relation_delete_all">#relation_delete_all</a>
+    
+    <li><a href="#method-i-relation_to_a">#relation_to_a</a>
+    
+    <li><a href="#method-i-to_a">#to_a</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Citier.html">Citier</a>
+  
+    <li><a href="../Citier/ActsAsCitier.html">Citier::ActsAsCitier</a>
+  
+    <li><a href="../Citier/ChildInstanceMethods.html">Citier::ChildInstanceMethods</a>
+  
+    <li><a href="../Citier/ClassMethods.html">Citier::ClassMethods</a>
+  
+    <li><a href="../Citier/InstanceMethods.html">Citier::InstanceMethods</a>
+  
+    <li><a href="../Citier/InstanceMethods/CitierUniquenessValidator.html">Citier::InstanceMethods::CitierUniquenessValidator</a>
+  
+    <li><a href="../Citier/InstanceMethods/ForcedWriters.html">Citier::InstanceMethods::ForcedWriters</a>
+  
+    <li><a href="../Citier/RootInstanceMethods.html">Citier::RootInstanceMethods</a>
+  
+    <li><a href="../ActiveRecord.html">ActiveRecord</a>
+  
+    <li><a href="../ActiveRecord/Base.html">ActiveRecord::Base</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters.html">ActiveRecord::ConnectionAdapters</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html">ActiveRecord::ConnectionAdapters::PostgreSQLAdapter</a>
+  
+    <li><a href="../ActiveRecord/ConnectionAdapters/SQLiteAdapter.html">ActiveRecord::ConnectionAdapters::SQLiteAdapter</a>
+  
+    <li><a href="../ActiveRecord/Relation.html">ActiveRecord::Relation</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ActiveRecord::Relation</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-apply_finder_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply_finder_options</span><span
+            class="method-args">(options)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="apply_finder_options-source">
+            <pre><span class="ruby-comment"># File lib/citier/relation_methods.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_finder_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">relation_apply_finder_options</span>(<span class="ruby-identifier">options</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">acts_as_citier?</span>
+  
+  <span class="ruby-identifier">relation</span> = <span class="ruby-keyword">self</span>
+  
+  <span class="ruby-comment"># With option :no_children set to true, only records of type self will be returned. </span>
+  <span class="ruby-comment"># So Root.all(:no_children =&gt; true) won't return Child records.</span>
+  <span class="ruby-identifier">no_children</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:no_children</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">no_children</span>
+    <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">clone</span>
+
+    <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@klass</span>
+    
+    <span class="ruby-identifier">self_type</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">superclass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">name</span>
+    <span class="ruby-identifier">relation</span> = <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">self_type</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">relation</span>.<span class="ruby-identifier">relation_apply_finder_options</span>(<span class="ruby-identifier">options</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- apply_finder_options-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Relation.html#method-i-relation_apply_finder_options">relation_apply_finder_options</a>
+        </div>
+        
+
+        
+      </div><!-- apply_finder_options-method -->
+
+    
+      <div id="method-i-delete_all" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete_all</span><span
+            class="method-args">(conditions = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete_all-source">
+            <pre><span class="ruby-comment"># File lib/citier/relation_methods.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_all</span>(<span class="ruby-identifier">conditions</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">relation_delete_all</span>(<span class="ruby-identifier">conditions</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">acts_as_citier?</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">relation_delete_all</span>(<span class="ruby-identifier">conditions</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">conditions</span>
+
+  <span class="ruby-identifier">deleted</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">ids</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@klass</span>
+  
+  <span class="ruby-identifier">bind_values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">bind_value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">bind_value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;id&quot;</span>
+      <span class="ruby-identifier">ids</span> = <span class="ruby-identifier">bind_value</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ids</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">where_values_hash</span>[<span class="ruby-string">&quot;id&quot;</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">where_values_hash</span>[<span class="ruby-value">:id</span>]
+  <span class="ruby-identifier">where_hash</span> = <span class="ruby-identifier">ids</span> <span class="ruby-operator">?</span> { <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ids</span> } <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  
+  <span class="ruby-identifier">deleted</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">base_class</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">where_hash</span>).<span class="ruby-identifier">relation_delete_all</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">superclass</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:Writable</span>)
+      <span class="ruby-identifier">citier_debug</span>(<span class="ruby-node">&quot;Deleting back up hierarchy #{c}&quot;</span>)
+      <span class="ruby-identifier">deleted</span> <span class="ruby-operator">&amp;=</span> <span class="ruby-identifier">c</span><span class="ruby-operator">::</span><span class="ruby-constant">Writable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">where_hash</span>).<span class="ruby-identifier">delete_all</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">c</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">superclass</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">deleted</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- delete_all-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Relation.html#method-i-relation_delete_all">relation_delete_all</a>
+        </div>
+        
+
+        
+      </div><!-- delete_all-method -->
+
+    
+      <div id="method-i-relation_apply_finder_options" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">relation_apply_finder_options</span><span
+            class="method-args">(options)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Relation.html#method-i-apply_finder_options">apply_finder_options</a>
+        </div>
+        
+      </div><!-- relation_apply_finder_options-method -->
+
+    
+      <div id="method-i-relation_delete_all" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">relation_delete_all</span><span
+            class="method-args">(conditions = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Relation.html#method-i-delete_all">delete_all</a>
+        </div>
+        
+      </div><!-- relation_delete_all-method -->
+
+    
+      <div id="method-i-relation_to_a" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">relation_to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Relation.html#method-i-to_a">to_a</a>
+        </div>
+        
+      </div><!-- relation_to_a-method -->
+
+    
+      <div id="method-i-to_a" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_a-source">
+            <pre><span class="ruby-comment"># File lib/citier/relation_methods.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">relation_to_a</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">acts_as_citier?</span>
+  
+  <span class="ruby-identifier">records</span> = <span class="ruby-identifier">relation_to_a</span>
+  
+  <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@klass</span>
+  
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">records</span>.<span class="ruby-identifier">all?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span> } 
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">records</span> 
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-identifier">full_records</span> = []
+  <span class="ruby-identifier">ids_wanted</span> = {}
+  
+  <span class="ruby-comment"># Map all the ids wanted per type</span>
+  <span class="ruby-identifier">records</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span> <span class="ruby-comment"># We don't need to find the record again if this is already the correct one</span>
+      <span class="ruby-identifier">full_records</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">record</span>
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-identifier">ids_wanted</span>[<span class="ruby-identifier">record</span>.<span class="ruby-identifier">class</span>] <span class="ruby-operator">||=</span> []
+    <span class="ruby-identifier">ids_wanted</span>[<span class="ruby-identifier">record</span>.<span class="ruby-identifier">class</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Find all wanted records</span>
+  <span class="ruby-identifier">ids_wanted</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type_class</span>, <span class="ruby-identifier">ids</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">full_records</span>.<span class="ruby-identifier">push</span>(*<span class="ruby-identifier">type_class</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">ids</span>))
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Make a new array with the found records at the right places</span>
+  <span class="ruby-identifier">records</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>              
+    <span class="ruby-identifier">full_record</span> = <span class="ruby-identifier">full_records</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">full_record</span><span class="ruby-operator">|</span> <span class="ruby-identifier">full_record</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">id</span> }
+    <span class="ruby-identifier">record</span>.<span class="ruby-identifier">force_attributes</span>(<span class="ruby-identifier">full_record</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-value">:@attributes</span>), <span class="ruby-value">:merge</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:clear_caches</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">records</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_a-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Relation.html#method-i-relation_to_a">relation_to_a</a>
+        </div>
+        
+
+        
+      </div><!-- to_a-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

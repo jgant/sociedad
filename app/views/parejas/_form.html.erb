@@ -1,0 +1,10 @@
+<%= render :partial => 'vinculos/form', :locals => {:f => f} %>
+<div class="field">
+  Tipo
+  <br />
+  <%= f.select(:tipo_pareja, Pareja::TIPOS) %>
+</div>
+<br />
+<div class="actions">
+	<%= f.submit 'Registra pareja' %>
+</div>

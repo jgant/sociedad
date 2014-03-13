@@ -1,0 +1,9 @@
+<b>Modificar pareja</b>
+
+<%= form_for(@vinculo, :as => :vinculo, 
+  :url => vinculo_path(@vinculo), :html => { :method => 'put' }) do |vinculo| %>
+  <%= render :partial => 'parejas/form', :locals => {:f => vinculo} %>
+<% end %>
+<br />
+<%= link_to 'Detalles', vinculo_path(:id => @vinculo.id) %> | 
+<%= link_to 'Volver', vinculos_path(:vinculos => 'parejas') %>
