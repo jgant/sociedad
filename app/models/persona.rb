@@ -5,8 +5,6 @@ class Persona < Miembro
   
   has_many :usuarios, :dependent => :destroy
   accepts_nested_attributes_for :usuarios
-
-  attr_accessible :apellidos, :nombre, :usuarios_attributes
   
   default_scope :order => 'apellidos'
   
@@ -14,7 +12,9 @@ class Persona < Miembro
 
   validates :apellidos, 
     :presence => {:message => " no admite estar en blanco"},
-    :format => {:with => PATTERN, :message => " admite sólo letras y separadores (blanco, punto o guión)", :allow_blank => true}
+    :format => {:with => PATTERN, 
+    			:message => " admite sólo letras y separadores (blanco, punto o guión)",
+    			:allow_blank => true}
   
   def apellidos=(ap)
     self[:apellidos] = sanea_nombre(ap)

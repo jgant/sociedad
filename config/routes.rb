@@ -3,8 +3,6 @@ Sociedad::Application.routes.draw do
 
   devise_for :usuarios
 
-  get 'sociedad', to: 'sociedad#index'
-
   #     Se introduce el scope locale para las mencionadas resources
   #     con el fin de traducir estas a diferentes idiomas.
   #     Por ahora se utiliza sólo español (vea config/locales/es.yml).

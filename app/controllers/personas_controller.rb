@@ -73,15 +73,6 @@ class PersonasController < ApplicationController
     end
   end
   
-  private
-  
-    def persona_params
-      params.require(:persona).permit(:nombre, :apellidos, 
-        usuarios_attributes: [:id, :email, :password, :password_confirmation, :persona_id])
-    end
-  
-  public
-  
   # PUT /personas/1
   # PUT /personas/1.json
   def update
@@ -111,4 +102,12 @@ class PersonasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+    def persona_params
+      params.require(:persona).permit(:nombre, :apellidos, 
+        usuarios_attributes: [:id, :email, :password, :password_confirmation, :persona_id])
+    end
+ 
 end

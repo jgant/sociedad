@@ -2,7 +2,6 @@ class Pareja < Vinculo
   include ActiveModel::Validations
   acts_as_citier
   
-  attr_accessible :tipo_pareja
   validate :fechas_unicas
 
   TIPOS = [

@@ -2,8 +2,6 @@
 class Miembro < ActiveRecord::Base
   acts_as_citier
 
-  attr_accessible :nombre, :email, :movil
-
   has_many :vinculos, :foreign_key => 'vinculador_id'
   has_many :vinculados, :through => :vinculos
   has_many :vinculos_inversos, :class_name => 'Vinculo', :foreign_key => 'vinculado_id'
