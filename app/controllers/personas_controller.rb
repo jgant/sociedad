@@ -78,7 +78,7 @@ class PersonasController < ApplicationController
   def update
     @persona = Persona.find(params[:id])
     respond_to do |format|
-      if @persona.update_attributes(params[:persona])
+      if @persona.update_attributes(persona_params)
         self.nombre_partial = nil
         format.html { redirect_to vinculos_path(:id => @persona.id), 
                         notice: 'Los datos de la persona se han modificado correctamente.' }

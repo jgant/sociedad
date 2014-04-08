@@ -5,4 +5,19 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Sociedad::Application.config.secret_token = '085919db2ef36cdef331cc8a3b46285b7c072dc97535afc7dea071c2c2d7c569a6ff7e2e18a6e0349179f17cd696e12d145a73eab961c6fb52ed73b72f96e43b'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Sociedad::Application.config.secret_token = secure_token 

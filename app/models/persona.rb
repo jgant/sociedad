@@ -6,7 +6,7 @@ class Persona < Miembro
   has_many :usuarios, :dependent => :destroy
   accepts_nested_attributes_for :usuarios
   
-  default_scope :order => 'apellidos'
+  default_scope { order('apellidos') }
   
   self.per_page = 10    # Número de personas que se sacarán de la base de datos para will_paginate
 

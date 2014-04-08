@@ -16,9 +16,9 @@ class VinculosController < ApplicationController
   def index
     id = params[:id]
     if id.nil?
-      @persona = Persona.find_by_id(usuario_id)
+      @persona = Persona.find(usuario_id)
     else
-      if @persona = Persona.find_by_id(id)
+      if @persona = Persona.find(id)
         self.usuario_id = @persona.id
       else
         return nil
@@ -30,9 +30,9 @@ class VinculosController < ApplicationController
       model = tipo_vinculos.classify.constantize      # Converteer el tipo del vinculo en la clase del model
       begin
         @vinculos = model.find_vinculos_of(@persona.id)
-      rescue ActiveRecord::RecordNotFound
-        @vinculos = []
-      end
+		    rescue ActiveRecord::RecordNotFound
+		      @vinculos = []
+		    end
     end  
     respond_to do |format|
       format.html # index.html.erb
@@ -50,10 +50,10 @@ class VinculosController < ApplicationController
   # - GET /vinculos/1
   # - GET /vinculos/1.json
   def show
-    @persona = Persona.find_by_id(usuario_id)
-    vinculo = Vinculo.find_by_id(params[:id])   # encuentra el vinculo en la superclase
+    @persona = Persona.find(usuario_id)
+    vinculo = Vinculo.find(params[:id])   # encuentra el vinculo en la superclase
     modelo = vinculo.type.constantize           # Converteer el tipo del vinculo en la clase del modelo 
-    @vinculo = modelo.find_by_id(vinculo.id)    # Inicia el vinculo correcto, aprovecha la MT Inheritance
+    @vinculo = modelo.find(vinculo.id)    # Inicia el vinculo correcto, aprovecha la MT Inheritance
     self.nombre_partial = @vinculo.type.tableize + '/show'   # Inicia el nombre del partial partiendo del 'type' del vínculo
     respond_to do |format|
       format.html { render 'index' }     
@@ -64,7 +64,7 @@ class VinculosController < ApplicationController
   # GET /vinculos/new
   # GET /vinculos/new.json
   def new
-    @persona = Persona.find_by_id(usuario_id)       # Inicia la persona
+    @persona = Persona.find(usuario_id)       # Inicia la persona
     tipo_vinculos = params[:vinculos]
     model = tipo_vinculos.classify.constantize      # Converteer el tipo del vinculo en la clase del model
     @vinculo = model.new
@@ -79,8 +79,8 @@ class VinculosController < ApplicationController
 
   # GET /vinculos/1/edit
   def edit
-    @persona = Persona.find_by_id(usuario_id)
-    vinculo = Vinculo.find_by_id(params[:id])
+    @persona = Persona.find(usuario_id)
+    vinculo = Vinculo.find(params[:id])
     modelo = vinculo.type.constantize  
     @vinculo = modelo.find(params[:id])
     self.nombre_partial = @vinculo.type.tableize + '/edit'
@@ -92,10 +92,10 @@ class VinculosController < ApplicationController
   # POST /vinculos
   # POST /vinculos.json
   def create
-    @persona = Persona.find_by_id(usuario_id)
+    @persona = Persona.find(usuario_id)
     tipo = params[:vinculo][:type]
     modelo = tipo.constantize      # Convierte el tipo del vinculo en la clase del model
-    @vinculo = modelo.new(params[:vinculo])
+    @vinculo = modelo.new(vinculo_params(vinculo.type))
     respond_to do |format|
       if @vinculo.save
         self.nombre_partial = tipo.tableize + '/index'
@@ -114,12 +114,12 @@ class VinculosController < ApplicationController
   # PUT /vinculos/1
   # PUT /vinculos/1.json
   def update
-    @persona = Persona.find_by_id(usuario_id)
-    vinculo = Vinculo.find_by_id(params[:id])
+    @persona = Persona.find(usuario_id)
+    vinculo = Vinculo.find(params[:id])
     modelo = vinculo.type.constantize
-    @vinculo = modelo.find_by_id(vinculo.id)
+    @vinculo = modelo.find(vinculo.id)
     respond_to do |format|
-      if @vinculo.update_attributes(params[:vinculo])
+		if @vinculo.update_attributes(vinculo_params(vinculo.type))
         self.nombre_partial = @vinculo.type.tableize << '/show'
         flash[:notice] = 'El vinculo se ha modificado correctamente.'
         format.html { render 'index' }
@@ -134,10 +134,10 @@ class VinculosController < ApplicationController
   # DELETE /vinculos/1
   # DELETE /vinculos/1.json
   def destroy
-    @persona = Persona.find_by_id(usuario_id)
-    vinculo = Vinculo.find_by_id(params[:id])
+    @persona = Persona.find(usuario_id)
+    vinculo = Vinculo.find(params[:id])
     modelo = vinculo.type.constantize
-    @vinculo = modelo.find_by_id(vinculo.id)
+    @vinculo = modelo.find(vinculo.id)
     @vinculos = modelo.find_vinculos_of(@persona.id)
     self.nombre_partial = @vinculo.type.tableize << '/index'
     @vinculo.destroy
@@ -147,4 +147,14 @@ class VinculosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+		def vinculo_params(nombre)
+			params.require(:vinculo). permit(self.send(nombre.downcase + '_params'))
+		end
+  	
+  	def pareja_params
+  		[:type, :vinculador_id, :vinculado_id, :desde, :hasta, :tipo_pareja]
+		end
 end

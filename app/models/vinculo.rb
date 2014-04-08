@@ -2,10 +2,10 @@ class Vinculo < ActiveRecord::Base
   include ActiveModel::Validations
 
   acts_as_citier :db_type_field => 'tipo_vinculo'
-  attr_accessible :type, :vinculador_id, :vinculado_id, :desde, :hasta
+#  attr_accessible :type, :vinculador_id, :vinculado_id, :desde, :hasta
   belongs_to :vinculador, :class_name => 'Miembro'
   belongs_to :vinculado, :class_name => 'Miembro'
-  default_scope :order => 'desde'
+  default_scope { order('desde') }
 
   validate :diferentes_vinculados, :fechas_ordenadas
   
@@ -26,7 +26,7 @@ class Vinculo < ActiveRecord::Base
   end
   
   def self.find_vinculos_of(persona_id)
-     where("vinculador_id = ? OR vinculado_id = ?", persona_id, persona_id).order("desde ASC")
+     where("vinculador_id = ? OR vinculado_id = ?", persona_id, persona_id)
   end 
   
 end
